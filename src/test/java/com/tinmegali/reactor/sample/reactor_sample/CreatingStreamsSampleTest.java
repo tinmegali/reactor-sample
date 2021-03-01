@@ -19,6 +19,7 @@ public class CreatingStreamsSampleTest {
         replaySink.emitNext(1, Sinks.EmitFailureHandler.FAIL_FAST);
         replaySink.emitNext(2, Sinks.EmitFailureHandler.FAIL_FAST);
         replaySink.tryEmitNext(3);
+        replaySink.tryEmitComplete();
 
         StepVerifier.create(replaySink.asFlux())
                 .expectNext(1)
